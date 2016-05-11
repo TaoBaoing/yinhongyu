@@ -15,5 +15,23 @@ namespace 优惠券管理
         {
             InitializeComponent();
         }
+
+        private void 地址管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f=new AddressList();
+            f.Show();
+        }
+
+        private void 发卷人管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f = new SendUserList();
+            f.Show();
+        }
+
+        private void 优惠券管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f = new JuanKindList();
+            f.Show();
+        }
     }
 }
