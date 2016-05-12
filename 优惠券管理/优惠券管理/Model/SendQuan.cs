@@ -14,6 +14,8 @@ namespace 优惠券管理.Model
         public long SendUserId { get; set; }//发卷人
         public long AddressId { get; set; }//发卷地点
 
+        public long JuanKindId { get; set; }//优惠券种类
+
         public string StrMinCode { get; set; }
         public string StrMaxCode { get; set; }
 

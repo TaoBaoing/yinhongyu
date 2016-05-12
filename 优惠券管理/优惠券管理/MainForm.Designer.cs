@@ -36,8 +36,6 @@
             this.新增发放ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.发放查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登记回收ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.新增回收ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.回收查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +49,7 @@
             this.登记回收ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(878, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(974, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -90,43 +88,32 @@
             this.新增发放ToolStripMenuItem.Name = "新增发放ToolStripMenuItem";
             this.新增发放ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.新增发放ToolStripMenuItem.Text = "新增发放";
+            this.新增发放ToolStripMenuItem.Click += new System.EventHandler(this.新增发放ToolStripMenuItem_Click);
             // 
             // 发放查询ToolStripMenuItem
             // 
             this.发放查询ToolStripMenuItem.Name = "发放查询ToolStripMenuItem";
             this.发放查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.发放查询ToolStripMenuItem.Text = "发放查询";
+            this.发放查询ToolStripMenuItem.Click += new System.EventHandler(this.发放查询ToolStripMenuItem_Click);
             // 
             // 登记回收ToolStripMenuItem
             // 
-            this.登记回收ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新增回收ToolStripMenuItem,
-            this.回收查询ToolStripMenuItem});
             this.登记回收ToolStripMenuItem.Name = "登记回收ToolStripMenuItem";
-            this.登记回收ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.登记回收ToolStripMenuItem.Text = "登记回收";
-            // 
-            // 新增回收ToolStripMenuItem
-            // 
-            this.新增回收ToolStripMenuItem.Name = "新增回收ToolStripMenuItem";
-            this.新增回收ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.新增回收ToolStripMenuItem.Text = "新增回收";
-            // 
-            // 回收查询ToolStripMenuItem
-            // 
-            this.回收查询ToolStripMenuItem.Name = "回收查询ToolStripMenuItem";
-            this.回收查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.回收查询ToolStripMenuItem.Text = "回收查询";
+            this.登记回收ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
+            this.登记回收ToolStripMenuItem.Text = "添加登记回收";
+            this.登记回收ToolStripMenuItem.Click += new System.EventHandler(this.登记回收ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 485);
+            this.ClientSize = new System.Drawing.Size(974, 524);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "优惠券管理";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -144,7 +131,5 @@
         private System.Windows.Forms.ToolStripMenuItem 新增发放ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 发放查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 登记回收ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 新增回收ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 回收查询ToolStripMenuItem;
     }
 }

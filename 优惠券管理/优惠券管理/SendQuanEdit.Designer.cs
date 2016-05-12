@@ -39,6 +39,8 @@
             this.StrMaxCode = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.JuanKindId = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 68);
+            this.label2.Location = new System.Drawing.Point(12, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 0;
@@ -68,8 +70,9 @@
             // 
             // SendUserId
             // 
+            this.SendUserId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SendUserId.FormattingEnabled = true;
-            this.SendUserId.Location = new System.Drawing.Point(325, 22);
+            this.SendUserId.Location = new System.Drawing.Point(324, 63);
             this.SendUserId.Name = "SendUserId";
             this.SendUserId.Size = new System.Drawing.Size(195, 20);
             this.SendUserId.TabIndex = 2;
@@ -77,7 +80,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(278, 25);
+            this.label3.Location = new System.Drawing.Point(277, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 0;
@@ -85,8 +88,9 @@
             // 
             // AddressId
             // 
+            this.AddressId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddressId.FormattingEnabled = true;
-            this.AddressId.Location = new System.Drawing.Point(72, 68);
+            this.AddressId.Location = new System.Drawing.Point(72, 105);
             this.AddressId.Name = "AddressId";
             this.AddressId.Size = new System.Drawing.Size(448, 20);
             this.AddressId.TabIndex = 2;
@@ -94,7 +98,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 116);
+            this.label4.Location = new System.Drawing.Point(12, 156);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 3;
@@ -102,14 +106,14 @@
             // 
             // StrMinCode
             // 
-            this.StrMinCode.Location = new System.Drawing.Point(72, 113);
+            this.StrMinCode.Location = new System.Drawing.Point(72, 150);
             this.StrMinCode.Name = "StrMinCode";
             this.StrMinCode.Size = new System.Drawing.Size(157, 21);
             this.StrMinCode.TabIndex = 4;
             // 
             // StrMaxCode
             // 
-            this.StrMaxCode.Location = new System.Drawing.Point(325, 116);
+            this.StrMaxCode.Location = new System.Drawing.Point(325, 153);
             this.StrMaxCode.Name = "StrMaxCode";
             this.StrMaxCode.Size = new System.Drawing.Size(195, 21);
             this.StrMaxCode.TabIndex = 6;
@@ -117,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(265, 119);
+            this.label5.Location = new System.Drawing.Point(265, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 5;
@@ -125,7 +129,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(215, 161);
+            this.button1.Location = new System.Drawing.Point(215, 198);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(91, 39);
             this.button1.TabIndex = 7;
@@ -133,18 +137,38 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 66);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "优惠券";
+            // 
+            // JuanKindId
+            // 
+            this.JuanKindId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.JuanKindId.FormattingEnabled = true;
+            this.JuanKindId.Location = new System.Drawing.Point(72, 63);
+            this.JuanKindId.Name = "JuanKindId";
+            this.JuanKindId.Size = new System.Drawing.Size(157, 20);
+            this.JuanKindId.TabIndex = 2;
+            // 
             // SendQuanEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 224);
+            this.ClientSize = new System.Drawing.Size(550, 266);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.StrMaxCode);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.StrMinCode);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.AddressId);
+            this.Controls.Add(this.JuanKindId);
             this.Controls.Add(this.SendUserId);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.SendDate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -152,6 +176,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SendQuanEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登记发放";
             this.Load += new System.EventHandler(this.SendQuanEdit_Load);
             this.ResumeLayout(false);
@@ -172,5 +197,7 @@
         private System.Windows.Forms.TextBox StrMaxCode;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox JuanKindId;
     }
 }

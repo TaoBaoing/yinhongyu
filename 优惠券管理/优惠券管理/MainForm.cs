@@ -33,5 +33,26 @@ namespace 优惠券管理
             var f = new JuanKindList();
             f.Show();
         }
+
+        private void 新增发放ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f=new SendQuanEdit();
+            f.Show();
+        }
+
+        private void 发放查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f=new SendQuanList();
+            f.Show();
+        }
+
+        private void 登记回收ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f=new ReceiveQuanEdit();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }
