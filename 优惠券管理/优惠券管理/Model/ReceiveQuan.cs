@@ -16,6 +16,20 @@ namespace 优惠券管理.Model
         public long JuanKindId { get; set; }
 
         public string StrCode { get; set; }
-    
+
+        public long IntCode
+        {
+            get
+            {
+                long code;
+                var mincode = StrCode.TrimStart('0');
+                if (long.TryParse(mincode, out code))
+                {
+                    return code;
+                }
+                return code;
+            }
+        }
+
     }
 }

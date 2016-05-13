@@ -19,25 +19,25 @@ namespace 优惠券管理.Model
         public string StrMinCode { get; set; }
         public string StrMaxCode { get; set; }
 
-        public int IntMinCode {
+        public long IntMinCode {
             get
             {
-                int code;
+                long code;
                 var mincode = StrMinCode.TrimStart('0');
-                if (int.TryParse(mincode,out code))
+                if (long.TryParse(mincode,out code))
                 {
                     return code;
                 }
                 return code;
             }
          }
-        public int IntMaxCode
+        public long IntMaxCode
         {
             get
             {
-                int code;
+                long code;
                 var mincode = StrMaxCode.TrimStart('0');
-                if (int.TryParse(mincode, out code))
+                if (long.TryParse(mincode, out code))
                 {
                     return code;
                 }
@@ -45,7 +45,7 @@ namespace 优惠券管理.Model
             }
         }
 
-        public int Number => IntMaxCode - IntMinCode + 1;
+        public long Number => IntMaxCode - IntMinCode + 1;
 
 
     }

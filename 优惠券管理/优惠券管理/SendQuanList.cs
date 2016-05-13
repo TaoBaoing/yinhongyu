@@ -53,7 +53,7 @@ namespace 优惠券管理
         private void BindGridView()
         {
             var sql =
-                "select top 50  sq.Id,sq.SendDate,su.DbName as 'SendUserName',ad.DbName as 'AddressName',jk.DbName as 'JuanKindName', sq.StrMinCode,sq.StrMaxCode,sq.Number from SendQuan sq left join SendUser su on sq.SendUserId=su.Id left join Address ad on sq.AddressId=ad.Id left join JuanKind jk on sq.JuanKindId=jk.Id where 1=1 ";
+                "select top 100  sq.Id,sq.SendDate,su.DbName as 'SendUserName',ad.DbName as 'AddressName',jk.DbName as 'JuanKindName', sq.StrMinCode,sq.StrMaxCode,sq.Number from SendQuan sq left join SendUser su on sq.SendUserId=su.Id left join Address ad on sq.AddressId=ad.Id left join JuanKind jk on sq.JuanKindId=jk.Id where 1=1 ";
             if (dateTimePicker1.Checked)
             {
                 sql += " and sq.SendDate>='" + DateTime.Parse(dateTimePicker1.Text) + "'";

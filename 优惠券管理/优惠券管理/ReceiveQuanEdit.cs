@@ -22,10 +22,11 @@ namespace 优惠券管理
             InitializeComponent();
         }
 
-        public void Init(long id, long sendQuanId)
+        public void Init(long id)
         {
             mId = id;
-            mSendQuanId = sendQuanId;
+            mReceiveQuan = new HHDapperSql().Query<ReceiveQuan>(mId);
+            mSendQuanId = mReceiveQuan.SendQuanId;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -78,7 +79,6 @@ namespace 优惠券管理
 
             if (mId > 0)
             {
-                mReceiveQuan=new HHDapperSql().Query<ReceiveQuan>(mId);
                 dateTimePicker1.Value = mReceiveQuan.ReceiveDate;
                 JuanKindId.SelectedValue = mReceiveQuan.JuanKindId;
                 txtCode.Text = mReceiveQuan.StrCode;

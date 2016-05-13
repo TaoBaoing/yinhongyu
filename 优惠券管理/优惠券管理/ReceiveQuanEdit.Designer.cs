@@ -113,7 +113,6 @@
             this.txtSendUserName.Size = new System.Drawing.Size(207, 21);
             this.txtSendUserName.TabIndex = 2;
             this.txtSendUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            
             // 
             // label5
             // 
@@ -133,13 +132,12 @@
             this.txtAddressName.Size = new System.Drawing.Size(207, 61);
             this.txtAddressName.TabIndex = 2;
             this.txtAddressName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(117, 286);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 32);
+            this.button1.Size = new System.Drawing.Size(75, 44);
             this.button1.TabIndex = 3;
             this.button1.Text = "保存";
             this.button1.UseVisualStyleBackColor = true;
@@ -165,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 330);
+            this.ClientSize = new System.Drawing.Size(327, 357);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtAddressName);
