@@ -15,7 +15,7 @@ namespace 优惠券管理
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (DateTime.Now > new DateTime(2015, 5, 20))
+            if (DateTime.Now > new DateTime(2016, 5, 20))
             {
                 MessageBox.Show("试用过期");
                 Application.Exit();

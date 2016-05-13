@@ -93,7 +93,7 @@ namespace 优惠券管理
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            BindDatas();
+           
         }
 
         private void BindDatas()
@@ -160,6 +160,11 @@ namespace 优惠券管理
         private void button1_Click(object sender, EventArgs e)
         {
             BindGridView();
+        }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            BindDatas();
         }
     }
 }
