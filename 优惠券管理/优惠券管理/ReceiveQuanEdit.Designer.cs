@@ -50,7 +50,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "卷种类";
+            this.label1.Text = "优惠券";
             // 
             // JuanKindId
             // 
@@ -68,7 +68,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 0;
-            this.label2.Text = "卷编号";
+            this.label2.Text = "券编号";
             // 
             // txtCode
             // 
@@ -85,7 +85,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 0;
-            this.label3.Text = "发卷时间";
+            this.label3.Text = "发券时间";
             // 
             // txtSendDate
             // 
@@ -103,7 +103,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 0;
-            this.label4.Text = "发卷人";
+            this.label4.Text = "发券人";
             // 
             // txtSendUserName
             // 
@@ -121,7 +121,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 0;
-            this.label5.Text = "发卷地点";
+            this.label5.Text = "发券地点";
             // 
             // txtAddressName
             // 

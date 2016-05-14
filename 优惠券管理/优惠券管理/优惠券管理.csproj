@@ -93,6 +93,12 @@
     <Compile Include="ReceiveQuanEdit.Designer.cs">
       <DependentUpon>ReceiveQuanEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReceiveTongJi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceiveTongJi.Designer.cs">
+      <DependentUpon>ReceiveTongJi.cs</DependentUpon>
+    </Compile>
     <Compile Include="SendQuanEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </Compile>
     <EmbeddedResource Include="ReceiveQuanEdit.resx">
       <DependentUpon>ReceiveQuanEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReceiveTongJi.resx">
+      <DependentUpon>ReceiveTongJi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SendQuanEdit.resx">
       <DependentUpon>SendQuanEdit.cs</DependentUpon>

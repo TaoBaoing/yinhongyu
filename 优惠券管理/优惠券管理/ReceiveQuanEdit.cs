@@ -65,7 +65,7 @@ namespace 优惠券管理
             }
 
             mSendQuanId = sendQuan.Id;
-            txtSendDate.Text = sendQuan.SendDate.ToString();
+            txtSendDate.Text = sendQuan.SendDate.ToString("yyyy/MM/dd");
             txtAddressName.Text=new HHDapperSql().Query<Address>(sendQuan.AddressId).DbName; 
             txtSendUserName.Text=new HHDapperSql().Query<SendUser>(sendQuan.SendUserId).DbName; 
         }
@@ -86,7 +86,7 @@ namespace 优惠券管理
             if (mSendQuanId > 0)
             {
                 sendQuan=new HHDapperSql().Query<SendQuan>(mSendQuanId);
-                txtSendDate.Text = sendQuan.SendDate.ToString();
+                txtSendDate.Text = sendQuan.SendDate.ToString("yyyy/MM/dd");
                 txtAddressName.Text = new HHDapperSql().Query<Address>(sendQuan.AddressId).DbName;
                 txtSendUserName.Text = new HHDapperSql().Query<SendUser>(sendQuan.SendUserId).DbName;
             }

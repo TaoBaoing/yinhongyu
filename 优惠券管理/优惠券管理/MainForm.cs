@@ -25,7 +25,7 @@ namespace 优惠券管理
             f.Show();
         }
 
-        private void 发卷人管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 发券人管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var f = new SendUserList();
             f.Show();
@@ -130,16 +130,12 @@ namespace 优惠券管理
             {
                 sql += " and rq.ReceiveDate<='" + DateTime.Parse(dateTimePicker2.Text) + "'";
             }
-            if (!string.IsNullOrEmpty(txtMinCode.Text))
+            if (!string.IsNullOrEmpty(txtCode.Text))
             {
-                var minCode = txtMinCode.Text.TrimStart('0');
-                sql += " and rq.IntCode>='" + minCode + "'";
+                var minCode = txtCode.Text.TrimStart('0');
+                sql += " and rq.StrCode like '%" + minCode + "%'";
             }
-            if (!string.IsNullOrEmpty(txtMaxCode.Text))
-            {
-                var maxCode = txtMaxCode.Text.TrimStart('0');
-                sql += " and rq.IntCode<='" + maxCode + "'";
-            }
+           
             if (!string.IsNullOrEmpty(SendUserId.Text))
             {
                 sql += " and sq.SendUserId='" + SendUserId.SelectedValue + "'";
@@ -165,6 +161,12 @@ namespace 优惠券管理
         private void MainForm_Activated(object sender, EventArgs e)
         {
             BindDatas();
+        }
+
+        private void 回收率统计ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f = new ReceiveTongJi();
+            f.ShowDialog();
         }
     }
 }

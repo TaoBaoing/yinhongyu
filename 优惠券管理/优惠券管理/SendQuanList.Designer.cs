@@ -30,25 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.AddressId = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.JuanKindId = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.SendUserId = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.SendUserId = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.AddressId = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.序号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.日期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.发券人 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.发券地点 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.卷种类 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.优惠券 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.起始号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.结束号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.数量 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label4 = new System.Windows.Forms.Label();
-            this.JuanKindId = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除选中ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -86,40 +86,69 @@
             this.splitContainer1.SplitterDistance = 37;
             this.splitContainer1.TabIndex = 0;
             // 
-            // dataGridView1
+            // button1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.序号,
-            this.日期,
-            this.发券人,
-            this.发券地点,
-            this.卷种类,
-            this.起始号,
-            this.结束号,
-            this.数量});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(930, 464);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            this.button1.Location = new System.Drawing.Point(843, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "查询";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dateTimePicker1
+            // AddressId
             // 
-            this.dateTimePicker1.Checked = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(12, 8);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowCheckBox = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(124, 21);
-            this.dateTimePicker1.TabIndex = 0;
+            this.AddressId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AddressId.FormattingEnabled = true;
+            this.AddressId.Location = new System.Drawing.Point(647, 10);
+            this.AddressId.Name = "AddressId";
+            this.AddressId.Size = new System.Drawing.Size(190, 20);
+            this.AddressId.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(615, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "地点";
+            // 
+            // JuanKindId
+            // 
+            this.JuanKindId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.JuanKindId.FormattingEnabled = true;
+            this.JuanKindId.Location = new System.Drawing.Point(481, 10);
+            this.JuanKindId.Name = "JuanKindId";
+            this.JuanKindId.Size = new System.Drawing.Size(125, 20);
+            this.JuanKindId.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(438, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "优惠券";
+            // 
+            // SendUserId
+            // 
+            this.SendUserId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SendUserId.FormattingEnabled = true;
+            this.SendUserId.Location = new System.Drawing.Point(329, 10);
+            this.SendUserId.Name = "SendUserId";
+            this.SendUserId.Size = new System.Drawing.Size(93, 20);
+            this.SendUserId.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(291, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "发券人";
             // 
             // label1
             // 
@@ -139,51 +168,41 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(124, 21);
             this.dateTimePicker2.TabIndex = 0;
             // 
-            // label2
+            // dateTimePicker1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(291, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "发券人";
+            this.dateTimePicker1.Checked = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 8);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowCheckBox = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(124, 21);
+            this.dateTimePicker1.TabIndex = 0;
             // 
-            // SendUserId
+            // dataGridView1
             // 
-            this.SendUserId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SendUserId.FormattingEnabled = true;
-            this.SendUserId.Location = new System.Drawing.Point(329, 10);
-            this.SendUserId.Name = "SendUserId";
-            this.SendUserId.Size = new System.Drawing.Size(93, 20);
-            this.SendUserId.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(615, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "地点";
-            // 
-            // AddressId
-            // 
-            this.AddressId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AddressId.FormattingEnabled = true;
-            this.AddressId.Location = new System.Drawing.Point(647, 10);
-            this.AddressId.Name = "AddressId";
-            this.AddressId.Size = new System.Drawing.Size(190, 20);
-            this.AddressId.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(843, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "查询";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.序号,
+            this.日期,
+            this.发券人,
+            this.发券地点,
+            this.优惠券,
+            this.起始号,
+            this.结束号,
+            this.数量});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(930, 464);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
             // 序号
             // 
@@ -215,12 +234,12 @@
             this.发券地点.ReadOnly = true;
             this.发券地点.Width = 300;
             // 
-            // 卷种类
             // 
-            this.卷种类.DataPropertyName = "JuanKindName";
-            this.卷种类.HeaderText = "卷种类";
-            this.卷种类.Name = "卷种类";
-            this.卷种类.ReadOnly = true;
+            // 
+            this.优惠券.DataPropertyName = "JuanKindName";
+            this.优惠券.HeaderText = "优惠券";
+            this.优惠券.Name = "优惠券";
+            this.优惠券.ReadOnly = true;
             // 
             // 起始号
             // 
@@ -243,24 +262,6 @@
             this.数量.Name = "数量";
             this.数量.ReadOnly = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(438, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "券种类";
-            // 
-            // JuanKindId
-            // 
-            this.JuanKindId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.JuanKindId.FormattingEnabled = true;
-            this.JuanKindId.Location = new System.Drawing.Point(481, 10);
-            this.JuanKindId.Name = "JuanKindId";
-            this.JuanKindId.Size = new System.Drawing.Size(125, 20);
-            this.JuanKindId.TabIndex = 3;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -271,7 +272,7 @@
             // 删除选中ToolStripMenuItem
             // 
             this.删除选中ToolStripMenuItem.Name = "删除选中ToolStripMenuItem";
-            this.删除选中ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除选中ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.删除选中ToolStripMenuItem.Text = "删除选中";
             this.删除选中ToolStripMenuItem.Click += new System.EventHandler(this.删除选中ToolStripMenuItem_Click);
             // 
@@ -314,7 +315,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 日期;
         private System.Windows.Forms.DataGridViewTextBoxColumn 发券人;
         private System.Windows.Forms.DataGridViewTextBoxColumn 发券地点;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 卷种类;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 优惠券;
         private System.Windows.Forms.DataGridViewTextBoxColumn 起始号;
         private System.Windows.Forms.DataGridViewTextBoxColumn 结束号;
         private System.Windows.Forms.DataGridViewTextBoxColumn 数量;

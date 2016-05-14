@@ -32,10 +32,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.新增ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.序号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.地址名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除选中ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.序号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.地址名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -79,21 +79,6 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
-            // 序号
-            // 
-            this.序号.DataPropertyName = "Id";
-            this.序号.HeaderText = "序号";
-            this.序号.Name = "序号";
-            this.序号.ReadOnly = true;
-            // 
-            // 地址名称
-            // 
-            this.地址名称.DataPropertyName = "DbName";
-            this.地址名称.HeaderText = "地址名称";
-            this.地址名称.Name = "地址名称";
-            this.地址名称.ReadOnly = true;
-            this.地址名称.Width = 500;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -104,9 +89,25 @@
             // 删除选中ToolStripMenuItem
             // 
             this.删除选中ToolStripMenuItem.Name = "删除选中ToolStripMenuItem";
-            this.删除选中ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除选中ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.删除选中ToolStripMenuItem.Text = "删除选中";
             this.删除选中ToolStripMenuItem.Click += new System.EventHandler(this.删除选中ToolStripMenuItem_Click);
+            // 
+            // 序号
+            // 
+            this.序号.DataPropertyName = "Id";
+            this.序号.HeaderText = "序号";
+            this.序号.Name = "序号";
+            this.序号.ReadOnly = true;
+            this.序号.Visible = false;
+            // 
+            // 地址名称
+            // 
+            this.地址名称.DataPropertyName = "DbName";
+            this.地址名称.HeaderText = "地址名称";
+            this.地址名称.Name = "地址名称";
+            this.地址名称.ReadOnly = true;
+            this.地址名称.Width = 500;
             // 
             // AddressList
             // 
@@ -136,9 +137,9 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 新增ToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 序号;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 地址名称;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 删除选中ToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 序号;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 地址名称;
     }
 }

@@ -82,7 +82,7 @@
             this.MinimizeBox = false;
             this.Name = "SendUserEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "发卷人";
+            this.Text = "发券人";
             this.Load += new System.EventHandler(this.SendUserEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
