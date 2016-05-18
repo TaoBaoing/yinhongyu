@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.地址管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.发券人管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,6 +38,7 @@
             this.新增发放ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.发放查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登记回收ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.回收率统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.JuanKindId = new System.Windows.Forms.ComboBox();
             this.AddressId = new System.Windows.Forms.ComboBox();
@@ -61,7 +63,6 @@
             this.回收日期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除选中ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.回收率统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -136,6 +137,13 @@
             this.登记回收ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
             this.登记回收ToolStripMenuItem.Text = "添加登记回收";
             this.登记回收ToolStripMenuItem.Click += new System.EventHandler(this.登记回收ToolStripMenuItem_Click);
+            // 
+            // 回收率统计ToolStripMenuItem
+            // 
+            this.回收率统计ToolStripMenuItem.Name = "回收率统计ToolStripMenuItem";
+            this.回收率统计ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
+            this.回收率统计ToolStripMenuItem.Text = "回收率统计";
+            this.回收率统计ToolStripMenuItem.Click += new System.EventHandler(this.回收率统计ToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -374,13 +382,6 @@
             this.删除选中ToolStripMenuItem.Text = "删除选中";
             this.删除选中ToolStripMenuItem.Click += new System.EventHandler(this.删除选中ToolStripMenuItem_Click);
             // 
-            // 回收率统计ToolStripMenuItem
-            // 
-            this.回收率统计ToolStripMenuItem.Name = "回收率统计ToolStripMenuItem";
-            this.回收率统计ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
-            this.回收率统计ToolStripMenuItem.Text = "回收率统计";
-            this.回收率统计ToolStripMenuItem.Click += new System.EventHandler(this.回收率统计ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -388,6 +389,7 @@
             this.ClientSize = new System.Drawing.Size(887, 546);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainForm";

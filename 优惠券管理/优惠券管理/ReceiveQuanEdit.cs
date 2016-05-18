@@ -47,6 +47,10 @@ namespace 优惠券管理
                 return;
             }
             var code = txtCode.Text.TrimStart('0');
+            if (string.IsNullOrEmpty(code))
+            {
+                code = "0";
+            }
             var sql = "select * from SendQuan where JuanKindId='" + JuanKindId.SelectedValue + "' and " + code +
                       ">=IntMinCode and " + code + "<=IntMaxCode";
              sendQuan = new HHDapperSql().Query<SendQuan>(sql).FirstOrDefault();
