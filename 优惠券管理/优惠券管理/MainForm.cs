@@ -18,7 +18,7 @@ namespace 优惠券管理
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
         }
-        string sqlcon = @"Password=123456;Persist Security Info=True;User ID=sa;Initial Catalog=YouHuiQuan;Data Source=.\SQLEXPRESS";
+//        string sqlcon = @"Password=123456;Persist Security Info=True;User ID=sa;Initial Catalog=YouHuiQuan;Data Source=.\SQLEXPRESS";
         private void 地址管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var f=new AddressList();
@@ -99,20 +99,20 @@ namespace 优惠券管理
         private void BindDatas()
         {
           
-            var users = new HHDapperSql(sqlcon).Query<SendUser>("select * from SendUser order by Id desc").ToList();
+            var users = new HHDapperSql().Query<SendUser>("select * from SendUser order by Id desc").ToList();
             users.Insert(0, new SendUser() { Id = 0, DbName = "" });
             SendUserId.DataSource = users;
             SendUserId.ValueMember = "Id";
             SendUserId.DisplayMember = "DbName";
 
 
-            var addresses = new HHDapperSql(sqlcon).Query<Address>("select * from Address order by Id desc").ToList();
+            var addresses = new HHDapperSql().Query<Address>("select * from Address order by Id desc").ToList();
             addresses.Insert(0, new Address() { Id = 0, DbName = "" });
             AddressId.DataSource = addresses;
             AddressId.ValueMember = "Id";
             AddressId.DisplayMember = "DbName";
 
-            var juanKinds = new HHDapperSql(sqlcon).Query<JuanKind>("select * from JuanKind order by Id desc").ToList();
+            var juanKinds = new HHDapperSql().Query<JuanKind>("select * from JuanKind order by Id desc").ToList();
             juanKinds.Insert(0, new JuanKind() { Id = 0, DbName = "" });
             JuanKindId.DataSource = juanKinds;
             JuanKindId.ValueMember = "Id";
@@ -122,7 +122,7 @@ namespace 优惠券管理
         private void BindGridView()
         {
             var sql =
-                "select top 100 rq.Id,sq.SendDate,su.DbName as 'SendUserName',ad.DbName as 'AddressName',jk.DbName as 'JuanKindName',rq.StrCode,rq.ReceiveDate from [ReceiveQuan] rq left join [dbo].[SendQuan] sq on rq.SendQuanId=sq.Id left join SendUser su on sq.SendUserId=su.Id left join Address ad on sq.AddressId=ad.Id left join JuanKind jk on sq.JuanKindId=jk.Id where 1=1 ";
+                "select top 1000 rq.Id,sq.SendDate,su.DbName as 'SendUserName',ad.DbName as 'AddressName',jk.DbName as 'JuanKindName',rq.StrCode,rq.ReceiveDate from [ReceiveQuan] rq left join [dbo].[SendQuan] sq on rq.SendQuanId=sq.Id left join SendUser su on sq.SendUserId=su.Id left join Address ad on sq.AddressId=ad.Id left join JuanKind jk on sq.JuanKindId=jk.Id where 1=1 ";
             if (dateTimePicker1.Checked)
             {
                 sql+= " and rq.ReceiveDate>='"+DateTime.Parse(dateTimePicker1.Text) +"'";
@@ -149,8 +149,8 @@ namespace 优惠券管理
             {
                 sql += " and sq.JuanKindId='" + JuanKindId.SelectedValue + "'";
             }
-
-            dataGridView1.DataSource = new HHDapperSql(sqlcon).ExecuteDataSet(sql).Tables[0].DefaultView;
+            sql += " order by rq.ReceiveDate desc";
+            dataGridView1.DataSource = new HHDapperSql().ExecuteDataSet(sql).Tables[0].DefaultView;
 
         }
 
