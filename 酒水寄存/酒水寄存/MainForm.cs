@@ -27,5 +27,11 @@ namespace 酒水寄存
         {
             Application.Exit();
         }
+
+        private void 种类管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f=new JiuShuiKindList();
+            f.Show();
+        }
     }
 }

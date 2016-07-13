@@ -25,6 +25,7 @@ namespace 酒水寄存
         public JiuShuiKindEdit()
         {
             InitializeComponent();
+            AppUtil.SetCommonInitForm(this);
         }
 
         private void JiuShuiKindEdit_Load(object sender, EventArgs e)
