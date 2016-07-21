@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HH.Dapper;
+using 酒水寄存.Models;
 
 namespace 酒水寄存
 {
@@ -15,6 +17,10 @@ namespace 酒水寄存
         public MainForm()
         {
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.ColumnHeadersHeightSizeMode= DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
         }
 
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,6 +38,121 @@ namespace 酒水寄存
         {
             var f=new JiuShuiKindList();
             f.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var f=new CunJiuEdit();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            SqlHelper.SetComboBox<JiuShuiKind>(cbxKind);
+
+            BindGridView();
+        }
+
+        private void BindGridView()
+        {
+            var sql =
+                "select c.Id 'CunJiuId',q.Id 'QuJiuId', (case when q.Id is null then '未取' else '已取' end) as '状态',c.CreateDateTime '存酒日期',c.OverDateTime '到期日期',k.DbName '种类',c.CardNumber '存酒卡号',c.CunName '客户姓名',c.CunPhone '客户电话',u.DbName '录入人',c.XuCunDateTime '续存日期',xu.DbName '续存操作人',qu.DbName '取酒操作人',q.CreateDateTime '取酒日期',q.OverAdminName '过期取酒管理员' from CunJiu c  left join JiuShuiKind k on c.KindId=k.Id left join DbUser u on c.UserId=u.Id left join DbUser xu on c.XuCunUserId=xu.Id left join QuJiu q on c.Id=q.CunJiuId left join DbUser qu on q.QiuUserId=qu.Id where 1=1 ";
+
+            if (dateTimePicker1.Checked)
+            {
+                sql += " and c.CreateDateTime>='" + Convert.ToDateTime(dateTimePicker1.Text) + "'";
+            }
+            if (dateTimePicker2.Checked)
+            {
+                sql += " and c.CreateDateTime<'" + Convert.ToDateTime(dateTimePicker1.Text).AddDays(1) + "'";
+            }
+            if (cbxKind.SelectedIndex > 0)
+            {
+                sql += " and c.KindId='" + cbxKind.SelectedIndex + "'";
+            }
+            if (comboBox1.Text == "未取")
+            {
+                sql += " and q.Id is null";
+            }
+            else if (comboBox1.Text == "已取")
+            {
+                sql += " and q.Id is not null";
+            }
+            if (!string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                sql += " and c.CunName like '%"+ txtName.Text.Trim()+ "%'";
+            }
+            if (!string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                sql += " and c.CunPhone like '%" + txtPhone.Text.Trim()+ "%'";
+            }
+
+            dataGridView1.DataSource=new HHDapperSql().ExecuteDataSet(sql).Tables[0].DefaultView;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                if (column is DataGridViewButtonColumn)
+                {
+                    if (column.Name == "续存")
+                    {
+                        if (MessageBox.Show("确定续存一个月吗？", "续存", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) ==
+                            DialogResult.OK)
+                        {
+                            var cunjiuid =(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            var sql = "update CunJiu set XuCunDateTime='" + DateTime.Now + "',XuCunUserId='" +
+                                      AppUtil.DbUser.Id + "',OverDateTime=dateadd(m,1,OverDateTime) where Id=" + cunjiuid;
+                            new HHDapperSql().ExecuteNonQuery(sql);
+                            BindGridView();
+                        }
+                    }
+                    else if (column.Name == "取酒")
+                    {
+                        if(MessageBox.Show("确定取酒吗？", "取酒", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) ==
+                            DialogResult.OK)
+                        {
+                            var cunjiuid =Convert.ToInt64((dataGridView1.Rows[e.RowIndex].Cells[0].Value));
+                            var cunjiu=new HHDapperSql().Query<CunJiu>(cunjiuid);
+                            if (DateTime.Today > cunjiu.OverDateTime)
+                            {
+                                var f=new OverDateManage();
+                                if (f.ShowDialog() == DialogResult.OK)
+                                {
+                                    var qujiu = new QuJiu();
+                                    qujiu.CreateDateTime = DateTime.Now;
+                                    qujiu.CunJiuId = cunjiuid;
+                                    qujiu.QiuUserId = AppUtil.DbUser.Id;
+                                    qujiu.OverAdminName = f.AdminName;
+                                    new HHDapperSql().Insert(qujiu);
+                                }
+                            }
+                            else
+                            {
+                                var qujiu = new QuJiu();
+                                qujiu.CreateDateTime = DateTime.Now;
+                                qujiu.CunJiuId = cunjiuid;
+                                qujiu.QiuUserId = AppUtil.DbUser.Id;
+                                new HHDapperSql().Insert(qujiu);
+                            }
+
+                        }
+                        BindGridView();
+                    }
+                    //这里可以编写你需要的任意关于按钮事件的操作~
+                    
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BindGridView();
         }
     }
 }

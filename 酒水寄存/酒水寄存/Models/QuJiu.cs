@@ -10,7 +10,8 @@ namespace 酒水寄存.Models
     public class QuJiu:DbBase
     {
         public DateTime CreateDateTime { get; set; }
-        public long UserId { get; set; }
+        public long QiuUserId { get; set; }
         public long CunJiuId { get; set; }
+        public string OverAdminName { get; set; }
     }
 }

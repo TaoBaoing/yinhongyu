@@ -10,8 +10,9 @@ namespace 酒水寄存.Models
    public  class CunJiu:DbBase
     {
        public DateTime CreateDateTime { get; set; }
+        public DateTime OverDateTime { get; set; }
         public long UserId { get; set; }
-        public long? KindId { get; set; }
+        public long KindId { get; set; }
 
        public int Number { get; set; }
 
