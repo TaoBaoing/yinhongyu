@@ -33,6 +33,7 @@
             this.种类管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -65,6 +66,7 @@
             this.过期取酒管理员 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.续存 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.取酒 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.返库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -78,7 +80,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.用户管理ToolStripMenuItem,
-            this.种类管理ToolStripMenuItem});
+            this.种类管理ToolStripMenuItem,
+            this.返库管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1309, 25);
@@ -125,6 +128,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtPhone);
             this.groupBox1.Controls.Add(this.txtName);
@@ -141,10 +145,20 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1264, 69);
+            this.groupBox1.Size = new System.Drawing.Size(1294, 69);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "存酒管理";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1183, 31);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(86, 23);
+            this.button3.TabIndex = 22;
+            this.button3.Text = "删除查询数据";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label6
             // 
@@ -256,7 +270,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1101, 30);
+            this.button2.Location = new System.Drawing.Point(1079, 31);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 11;
@@ -306,7 +320,10 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1304, 477);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             // 
             // CunJiuId
             // 
@@ -446,6 +463,13 @@
             this.取酒.UseColumnTextForButtonValue = true;
             this.取酒.Width = 80;
             // 
+            // 返库管理ToolStripMenuItem
+            // 
+            this.返库管理ToolStripMenuItem.Name = "返库管理ToolStripMenuItem";
+            this.返库管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.返库管理ToolStripMenuItem.Text = "返库管理";
+            this.返库管理ToolStripMenuItem.Click += new System.EventHandler(this.返库管理ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -512,5 +536,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 过期取酒管理员;
         private System.Windows.Forms.DataGridViewButtonColumn 续存;
         private System.Windows.Forms.DataGridViewButtonColumn 取酒;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolStripMenuItem 返库管理ToolStripMenuItem;
     }
 }

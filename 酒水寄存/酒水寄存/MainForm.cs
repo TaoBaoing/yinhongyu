@@ -23,6 +23,23 @@ namespace 酒水寄存
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
         }
 
+        private void SetVisiable()
+        {
+            if (AppUtil.DbUser.UserType == UserType.库管)
+            {
+                用户管理ToolStripMenuItem.Visible = false;
+                种类管理ToolStripMenuItem.Visible = false;
+                button1.Visible = false;
+                button3.Visible = false;
+                dataGridView1.Columns["续存"].Visible = false;
+                dataGridView1.Columns["取酒"].Visible = false;
+            }
+            else if (AppUtil.DbUser.UserType == UserType.客户)
+            {
+                button3.Visible = false;
+            }
+        }
+
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var f=new UserList();
@@ -54,12 +71,13 @@ namespace 酒水寄存
             SqlHelper.SetComboBox<JiuShuiKind>(cbxKind);
 
             BindGridView();
+            SetVisiable();
         }
 
         private void BindGridView()
         {
             var sql =
-                "select c.Id 'CunJiuId',q.Id 'QuJiuId', (case when q.Id is null then '未取' else '已取' end) as '状态',c.CreateDateTime '存酒日期',c.OverDateTime '到期日期',k.DbName '种类',c.CardNumber '存酒卡号',c.CunName '客户姓名',c.CunPhone '客户电话',u.DbName '录入人',c.XuCunDateTime '续存日期',xu.DbName '续存操作人',qu.DbName '取酒操作人',q.CreateDateTime '取酒日期',q.OverAdminName '过期取酒管理员' from CunJiu c  left join JiuShuiKind k on c.KindId=k.Id left join DbUser u on c.UserId=u.Id left join DbUser xu on c.XuCunUserId=xu.Id left join QuJiu q on c.Id=q.CunJiuId left join DbUser qu on q.QiuUserId=qu.Id where 1=1 ";
+                "select top 1000 c.Id 'CunJiuId',q.Id 'QuJiuId', (case when q.Id is null then '未取' else '已取' end) as '状态',c.CreateDateTime '存酒日期',c.OverDateTime '到期日期',k.DbName '种类',c.CardNumber '存酒卡号',c.CunName '客户姓名',c.CunPhone '客户电话',u.DbName '录入人',c.XuCunDateTime '续存日期',xu.DbName '续存操作人',qu.DbName '取酒操作人',q.CreateDateTime '取酒日期',q.OverAdminName '过期取酒管理员' from CunJiu c  left join JiuShuiKind k on c.KindId=k.Id left join DbUser u on c.UserId=u.Id left join DbUser xu on c.XuCunUserId=xu.Id left join QuJiu q on c.Id=q.CunJiuId left join DbUser qu on q.QiuUserId=qu.Id where 1=1 ";
 
             if (dateTimePicker1.Checked)
             {
@@ -90,6 +108,7 @@ namespace 酒水寄存
                 sql += " and c.CunPhone like '%" + txtPhone.Text.Trim()+ "%'";
             }
 
+            sql += " order by c.CreateDateTime desc";
             dataGridView1.DataSource=new HHDapperSql().ExecuteDataSet(sql).Tables[0].DefaultView;
         }
 
@@ -153,6 +172,73 @@ namespace 酒水寄存
         private void button2_Click(object sender, EventArgs e)
         {
             BindGridView();
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex>0)
+            {
+                DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                if (column is DataGridViewButtonColumn)
+                {
+                    if (column.Name == "续存")
+                    {
+                        column.ReadOnly = true;
+                    }
+                    //dataGridView1[e.ColumnIndex, e.RowIndex].ReadOnly = true;
+                }
+            }
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            //e.Cancel = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count < 1)
+            {
+                return;
+            }
+            var inid = "";
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                var id = Convert.ToInt64(row.Cells[0].Value);
+                inid = inid + "," + id;
+            }
+            inid = inid.Remove(0, 1);
+            var sql = "delete from CunJiu where Id in (" + inid + ")";
+            var sqlq = "delete from QuJiu where CunJiuId in ("+inid+")";
+            new HHDapperSql().ExecuteNonQuery(sql);
+            new HHDapperSql().ExecuteNonQuery(sqlq);
+            MessageBox.Show("删除成功");
+            BindGridView();
+        }
+
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            var status =dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            if (status == "已取")
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Green;
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Green;
+            }
+            else
+            {
+                DateTime time = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+                if (DateTime.Now > time)
+                {
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Red;
+                }
+            }
+        }
+
+        private void 返库管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var f=new FanKuList();
+            f.Show();
         }
     }
 }

@@ -63,6 +63,18 @@
     <Compile Include="CunJiuList.Designer.cs">
       <DependentUpon>CunJiuList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FanKuEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FanKuEdit.Designer.cs">
+      <DependentUpon>FanKuEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FanKuList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FanKuList.Designer.cs">
+      <DependentUpon>FanKuList.cs</DependentUpon>
+    </Compile>
     <Compile Include="JiuShuiKindEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +101,7 @@
     </Compile>
     <Compile Include="Models\CunJiu.cs" />
     <Compile Include="Models\DbUser.cs" />
+    <Compile Include="Models\FanKu.cs" />
     <Compile Include="Models\JiuShuiKind.cs" />
     <Compile Include="Models\QuJiu.cs" />
     <Compile Include="OverDateManage.cs">
@@ -117,6 +130,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CunJiuList.resx">
       <DependentUpon>CunJiuList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FanKuEdit.resx">
+      <DependentUpon>FanKuEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FanKuList.resx">
+      <DependentUpon>FanKuList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JiuShuiKindEdit.resx">
       <DependentUpon>JiuShuiKindEdit.cs</DependentUpon>

@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbxKind = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.cbxKind = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -75,14 +75,45 @@
             this.splitContainer1.SplitterDistance = 55;
             this.splitContainer1.TabIndex = 0;
             // 
-            // button1
+            // comboBox1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "新  增";
-            this.button1.UseVisualStyleBackColor = true;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "",
+            "未取",
+            "已取"});
+            this.comboBox1.Location = new System.Drawing.Point(631, 17);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(71, 20);
+            this.comboBox1.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(596, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "状态";
+            // 
+            // cbxKind
+            // 
+            this.cbxKind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxKind.FormattingEnabled = true;
+            this.cbxKind.Location = new System.Drawing.Point(480, 16);
+            this.cbxKind.Name = "cbxKind";
+            this.cbxKind.Size = new System.Drawing.Size(109, 20);
+            this.cbxKind.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(445, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "种类";
             // 
             // label2
             // 
@@ -120,46 +151,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(124, 21);
             this.dateTimePicker1.TabIndex = 7;
             // 
-            // cbxKind
-            // 
-            this.cbxKind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxKind.FormattingEnabled = true;
-            this.cbxKind.Location = new System.Drawing.Point(480, 16);
-            this.cbxKind.Name = "cbxKind";
-            this.cbxKind.Size = new System.Drawing.Size(109, 20);
-            this.cbxKind.TabIndex = 10;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(445, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "种类";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(596, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "状态";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "",
-            "未取",
-            "已取"});
-            this.comboBox1.Location = new System.Drawing.Point(631, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(71, 20);
-            this.comboBox1.TabIndex = 10;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(737, 16);
@@ -169,6 +160,15 @@
             this.button2.Text = "查  询";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "新  增";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
