@@ -24,17 +24,13 @@ namespace 酒水寄存
 
         private void FanKuEdit_Load(object sender, EventArgs e)
         {
-            SqlHelper.SetComboBox<JiuShuiKind>(cboxKind);
-
+            
             if (mId > 0)
             {
                 mFanKu=new HHDapperSql().Query<FanKu>(mId);
                 dateTimePickerStart.Value = mFanKu.CreateDateTime;
                 txtUserName.Text=new HHDapperSql().Query<DbUser>(mFanKu.UserId).DbName;
-                if (mFanKu.KindId > 0)
-                {
-                    cboxKind.Text = new HHDapperSql().Query<JiuShuiKind>(mFanKu.KindId).DbName;
-                }
+                txtPinMing.Text = mFanKu.PinMing;
 
                 txtNumber.Text = mFanKu.Number.ToString();
             }
@@ -54,14 +50,13 @@ namespace 酒水寄存
                 return;
             }
             mFanKu.CreateDateTime = Convert.ToDateTime(dateTimePickerStart.Text);
-            if (cboxKind.SelectedIndex > 0)
-            {
-                mFanKu.KindId =Convert.ToInt64(cboxKind.SelectedValue);
-            }
+           
             if (mId < 1)
             {
                 mFanKu.UserId = AppUtil.DbUser.Id;
             }
+
+            mFanKu.PinMing = txtPinMing.Text.Trim();
             mFanKu.Number = Convert.ToInt32(number);
 
             if (mId > 0)

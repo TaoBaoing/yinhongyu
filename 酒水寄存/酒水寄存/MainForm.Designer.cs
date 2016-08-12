@@ -31,9 +31,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.种类管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.返库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -49,6 +49,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCardNumber = new System.Windows.Forms.TextBox();
             this.CunJiuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuJiuId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +63,7 @@
             this.存酒卡号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.客户姓名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.客户电话 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.数量 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.录入人 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.续存日期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.续存操作人 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +72,6 @@
             this.过期取酒管理员 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.续存 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.取酒 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.返库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -74,6 +79,7 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -84,7 +90,7 @@
             this.返库管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1309, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1294, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,6 +107,13 @@
             this.种类管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.种类管理ToolStripMenuItem.Text = "种类管理";
             this.种类管理ToolStripMenuItem.Click += new System.EventHandler(this.种类管理ToolStripMenuItem_Click);
+            // 
+            // 返库管理ToolStripMenuItem
+            // 
+            this.返库管理ToolStripMenuItem.Name = "返库管理ToolStripMenuItem";
+            this.返库管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.返库管理ToolStripMenuItem.Text = "返库管理";
+            this.返库管理ToolStripMenuItem.Click += new System.EventHandler(this.返库管理ToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -120,7 +133,7 @@
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Red;
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(1304, 554);
+            this.splitContainer1.Size = new System.Drawing.Size(1289, 554);
             this.splitContainer1.SplitterDistance = 73;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -128,12 +141,13 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtCardNumber);
             this.groupBox1.Controls.Add(this.txtPhone);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.cbxKind);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
@@ -145,25 +159,15 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1294, 69);
+            this.groupBox1.Size = new System.Drawing.Size(1279, 69);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "存酒管理";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(1183, 31);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 23);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "删除查询数据";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(286, 35);
+            this.label6.Location = new System.Drawing.Point(271, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 12);
             this.label6.TabIndex = 21;
@@ -171,14 +175,14 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(962, 33);
+            this.txtPhone.Location = new System.Drawing.Point(837, 33);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(99, 21);
             this.txtPhone.TabIndex = 20;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(794, 34);
+            this.txtName.Location = new System.Drawing.Point(696, 33);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(109, 21);
             this.txtName.TabIndex = 20;
@@ -191,15 +195,15 @@
             "",
             "未取",
             "已取"});
-            this.comboBox1.Location = new System.Drawing.Point(626, 33);
+            this.comboBox1.Location = new System.Drawing.Point(581, 32);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(98, 20);
+            this.comboBox1.Size = new System.Drawing.Size(78, 20);
             this.comboBox1.TabIndex = 18;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(591, 37);
+            this.label4.Location = new System.Drawing.Point(546, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 15;
@@ -209,15 +213,15 @@
             // 
             this.cbxKind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxKind.FormattingEnabled = true;
-            this.cbxKind.Location = new System.Drawing.Point(475, 32);
+            this.cbxKind.Location = new System.Drawing.Point(457, 32);
             this.cbxKind.Name = "cbxKind";
-            this.cbxKind.Size = new System.Drawing.Size(109, 20);
+            this.cbxKind.Size = new System.Drawing.Size(81, 20);
             this.cbxKind.TabIndex = 19;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(927, 36);
+            this.label5.Location = new System.Drawing.Point(809, 39);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 17;
@@ -226,7 +230,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(440, 36);
+            this.label3.Location = new System.Drawing.Point(422, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 16;
@@ -235,16 +239,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(735, 37);
+            this.label1.Location = new System.Drawing.Point(669, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 17;
-            this.label1.Text = "客人姓名";
+            this.label1.Text = "姓名";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 33);
+            this.label2.Location = new System.Drawing.Point(89, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 17;
@@ -253,7 +257,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Checked = false;
-            this.dateTimePicker2.Location = new System.Drawing.Point(304, 31);
+            this.dateTimePicker2.Location = new System.Drawing.Point(289, 31);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.ShowCheckBox = true;
             this.dateTimePicker2.Size = new System.Drawing.Size(124, 21);
@@ -262,7 +266,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Checked = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(159, 30);
+            this.dateTimePicker1.Location = new System.Drawing.Point(144, 30);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.ShowCheckBox = true;
             this.dateTimePicker1.Size = new System.Drawing.Size(124, 21);
@@ -270,7 +274,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1079, 31);
+            this.button2.Location = new System.Drawing.Point(1119, 31);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 11;
@@ -303,6 +307,7 @@
             this.存酒卡号,
             this.客户姓名,
             this.客户电话,
+            this.数量,
             this.录入人,
             this.续存日期,
             this.续存操作人,
@@ -318,12 +323,49 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1304, 477);
+            this.dataGridView1.Size = new System.Drawing.Size(1289, 477);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolCurrentUser});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 557);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1294, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(68, 17);
+            this.toolStripStatusLabel1.Text = "当前用户：";
+            // 
+            // toolCurrentUser
+            // 
+            this.toolCurrentUser.Name = "toolCurrentUser";
+            this.toolCurrentUser.Size = new System.Drawing.Size(0, 17);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(942, 38);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "存酒卡号";
+            // 
+            // txtCardNumber
+            // 
+            this.txtCardNumber.Location = new System.Drawing.Point(992, 33);
+            this.txtCardNumber.Name = "txtCardNumber";
+            this.txtCardNumber.Size = new System.Drawing.Size(99, 21);
+            this.txtCardNumber.TabIndex = 20;
             // 
             // CunJiuId
             // 
@@ -397,6 +439,14 @@
             this.客户电话.ReadOnly = true;
             this.客户电话.Width = 80;
             // 
+            // 数量
+            // 
+            this.数量.DataPropertyName = "数量";
+            this.数量.HeaderText = "数量";
+            this.数量.Name = "数量";
+            this.数量.ReadOnly = true;
+            this.数量.Width = 60;
+            // 
             // 录入人
             // 
             this.录入人.DataPropertyName = "录入人";
@@ -463,18 +513,12 @@
             this.取酒.UseColumnTextForButtonValue = true;
             this.取酒.Width = 80;
             // 
-            // 返库管理ToolStripMenuItem
-            // 
-            this.返库管理ToolStripMenuItem.Name = "返库管理ToolStripMenuItem";
-            this.返库管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.返库管理ToolStripMenuItem.Text = "返库管理";
-            this.返库管理ToolStripMenuItem.Click += new System.EventHandler(this.返库管理ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1309, 579);
+            this.ClientSize = new System.Drawing.Size(1294, 579);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -492,6 +536,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -519,6 +565,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem 返库管理ToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolCurrentUser;
+        private System.Windows.Forms.TextBox txtCardNumber;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn CunJiuId;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuJiuId;
         private System.Windows.Forms.DataGridViewTextBoxColumn 状态;
@@ -528,6 +580,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 存酒卡号;
         private System.Windows.Forms.DataGridViewTextBoxColumn 客户姓名;
         private System.Windows.Forms.DataGridViewTextBoxColumn 客户电话;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 数量;
         private System.Windows.Forms.DataGridViewTextBoxColumn 录入人;
         private System.Windows.Forms.DataGridViewTextBoxColumn 续存日期;
         private System.Windows.Forms.DataGridViewTextBoxColumn 续存操作人;
@@ -536,7 +589,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 过期取酒管理员;
         private System.Windows.Forms.DataGridViewButtonColumn 续存;
         private System.Windows.Forms.DataGridViewButtonColumn 取酒;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ToolStripMenuItem 返库管理ToolStripMenuItem;
     }
 }

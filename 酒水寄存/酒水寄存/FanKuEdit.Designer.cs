@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.cboxKind = new System.Windows.Forms.ComboBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtNumber = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtPinMing = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -48,15 +48,6 @@
             this.button1.Text = "保  存";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cboxKind
-            // 
-            this.cboxKind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxKind.FormattingEnabled = true;
-            this.cboxKind.Location = new System.Drawing.Point(119, 109);
-            this.cboxKind.Name = "cboxKind";
-            this.cboxKind.Size = new System.Drawing.Size(124, 20);
-            this.cboxKind.TabIndex = 24;
             // 
             // txtUserName
             // 
@@ -98,7 +89,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 12;
-            this.label3.Text = "种类";
+            this.label3.Text = "品名";
             // 
             // dateTimePickerStart
             // 
@@ -117,13 +108,21 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "返库日期";
             // 
+            // txtPinMing
+            // 
+            this.txtPinMing.Enabled = false;
+            this.txtPinMing.Location = new System.Drawing.Point(119, 109);
+            this.txtPinMing.Name = "txtPinMing";
+            this.txtPinMing.Size = new System.Drawing.Size(124, 21);
+            this.txtPinMing.TabIndex = 21;
+            // 
             // FanKuEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(324, 274);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.cboxKind);
+            this.Controls.Add(this.txtPinMing);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.txtNumber);
             this.Controls.Add(this.label4);
@@ -142,7 +141,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox cboxKind;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtNumber;
         private System.Windows.Forms.Label label4;
@@ -150,5 +148,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePickerStart;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPinMing;
     }
 }

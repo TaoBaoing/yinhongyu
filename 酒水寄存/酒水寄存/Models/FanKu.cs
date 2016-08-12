@@ -15,6 +15,8 @@ namespace 酒水寄存.Models
 
         public long KindId { get; set; }
 
+        public string PinMing { get; set; }
+
         public int Number { get; set; }
 
     }
