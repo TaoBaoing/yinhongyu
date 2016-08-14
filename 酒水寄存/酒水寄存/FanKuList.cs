@@ -28,7 +28,7 @@ namespace 酒水寄存
         private void BindGridView()
         {
             var sql =
-                "select f.CreateDateTime,u.DbName 'UName',k.DbName 'KName',Number from FanKu f left join DbUser u on f.UserId=u.Id left join JiuShuiKind k on f.KindId=k.Id where 1=1 ";
+                "select f.Id,f.CreateDateTime,u.DbName 'UName',PinMing,Number from FanKu f left join DbUser u on f.UserId=u.Id  where 1=1 ";
             if (dateTimePicker1.Checked)
             {
                 sql += " and f.CreateDateTime>='" + Convert.ToDateTime(dateTimePicker1.Text) + "'";
@@ -44,13 +44,13 @@ namespace 酒水寄存
             var table = new HHDapperSql().ExecuteDataSet(sql).Tables[0];
             dataGridView1.DataSource= table.DefaultView;
 
-            int number = 0;
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                var n = Convert.ToInt32(table.Rows[i]["Number"]);
-                number += n;
-            }
-            label5.Text = number.ToString();
+//            int number = 0;
+//            for (int i = 0; i < table.Rows.Count; i++)
+//            {
+//                var n = Convert.ToInt32(table.Rows[i]["Number"]);
+//                number += n;
+//            }
+//            label5.Text = number.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -85,6 +85,17 @@ namespace 酒水寄存
                 var sql = "delete from FanKu where Id in (" + inid + ")";
                 new HHDapperSql().ExecuteNonQuery(sql);
                 MessageBox.Show("删除成功");
+                BindGridView();
+            }
+        }
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var id = dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+            var f = new FanKuEdit();
+            f.Init(Convert.ToInt64(id));
+            if (f.ShowDialog() == DialogResult.OK)
+            {
                 BindGridView();
             }
         }

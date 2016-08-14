@@ -110,7 +110,6 @@
             // 
             // txtPinMing
             // 
-            this.txtPinMing.Enabled = false;
             this.txtPinMing.Location = new System.Drawing.Point(119, 109);
             this.txtPinMing.Name = "txtPinMing";
             this.txtPinMing.Size = new System.Drawing.Size(124, 21);

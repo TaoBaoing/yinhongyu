@@ -19,7 +19,7 @@ namespace 酒水寄存
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.MultiSelect = false;
-            dataGridView1.ColumnHeadersHeightSizeMode= DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
         }
 
@@ -33,6 +33,7 @@ namespace 酒水寄存
                 dataGridView1.Columns["续存"].Visible = false;
                 dataGridView1.Columns["取酒"].Visible = false;
                 返库管理ToolStripMenuItem.Visible = false;
+                contextMenuStrip1.Visible = false;
             }
             else if (AppUtil.DbUser.UserType == UserType.客户)
             {
@@ -42,7 +43,7 @@ namespace 酒水寄存
 
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var f=new UserList();
+            var f = new UserList();
             f.Show();
         }
 
@@ -53,13 +54,13 @@ namespace 酒水寄存
 
         private void 种类管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var f=new JiuShuiKindList();
+            var f = new JiuShuiKindList();
             f.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var f=new CunJiuEdit();
+            var f = new CunJiuEdit();
             if (f.ShowDialog() == DialogResult.OK)
             {
 
@@ -77,7 +78,7 @@ namespace 酒水寄存
             var maxDate = DateTime.Today.AddMonths(-6);
             var delSql = "delete from CunJiu where CreateDateTime<'" + maxDate + "'";
             new HHDapperSql().ExecuteNonQuery(delSql);
-            delSql= "delete from QuJiu where CreateDateTime<'" + maxDate + "'";
+            delSql = "delete from QuJiu where CreateDateTime<'" + maxDate + "'";
             new HHDapperSql().ExecuteNonQuery(delSql);
             delSql = "delete from FanKu where CreateDateTime<'" + maxDate + "'";
             new HHDapperSql().ExecuteNonQuery(delSql);
@@ -110,23 +111,28 @@ namespace 酒水寄存
             }
             if (!string.IsNullOrWhiteSpace(txtName.Text))
             {
-                sql += " and c.CunName like '%"+ txtName.Text.Trim()+ "%'";
+                sql += " and c.CunName like '%" + txtName.Text.Trim() + "%'";
             }
             if (!string.IsNullOrWhiteSpace(txtPhone.Text))
             {
-                sql += " and c.CunPhone = '" + txtPhone.Text.Trim()+ "'";
+                sql += " and c.CunPhone = '" + txtPhone.Text.Trim() + "'";
             }
             if (!string.IsNullOrWhiteSpace(txtCardNumber.Text))
             {
-                sql += " and c.CardNumber = '" + txtCardNumber.Text.Trim()+ "'";
+                sql += " and c.CardNumber = '" + txtCardNumber.Text.Trim() + "'";
             }
 
             sql += " order by c.CreateDateTime desc";
-            dataGridView1.DataSource=new HHDapperSql().ExecuteDataSet(sql).Tables[0].DefaultView;
+            dataGridView1.DataSource = new HHDapperSql().ExecuteDataSet(sql).Tables[0].DefaultView;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (AppUtil.DbUser.UserType == UserType.库管)
+            {
+                MessageBox.Show("没有删除权限");
+                return;
+            }
             if (e.RowIndex >= 0)
             {
                 DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
@@ -137,7 +143,7 @@ namespace 酒水寄存
                         if (MessageBox.Show("确定续存一个月吗？", "续存", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) ==
                             DialogResult.OK)
                         {
-                            var cunjiuid =(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                            var cunjiuid = (dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                             var sql = "update CunJiu set XuCunDateTime='" + DateTime.Now + "',XuCunUserId='" +
                                       AppUtil.DbUser.Id + "',OverDateTime=dateadd(m,1,OverDateTime) where Id=" + cunjiuid;
                             new HHDapperSql().ExecuteNonQuery(sql);
@@ -146,18 +152,18 @@ namespace 酒水寄存
                     }
                     else if (column.Name == "取酒")
                     {
-                        if (dataGridView1[e.ColumnIndex, e.RowIndex].Value == null ||dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString() == "已取")
+                        if (dataGridView1[e.ColumnIndex, e.RowIndex].Value == null || dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString() == "已取")
                         {
                             return;
                         }
-                        if(MessageBox.Show("确定取酒吗？", "取酒", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) ==
+                        if (MessageBox.Show("确定取酒吗？", "取酒", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) ==
                             DialogResult.OK)
                         {
-                            var cunjiuid =Convert.ToInt64((dataGridView1.Rows[e.RowIndex].Cells[0].Value));
-                            var cunjiu=new HHDapperSql().Query<CunJiu>(cunjiuid);
+                            var cunjiuid = Convert.ToInt64((dataGridView1.Rows[e.RowIndex].Cells[0].Value));
+                            var cunjiu = new HHDapperSql().Query<CunJiu>(cunjiuid);
                             if (DateTime.Today > cunjiu.OverDateTime)
                             {
-                                var f=new OverDateManage();
+                                var f = new OverDateManage();
                                 if (f.ShowDialog() == DialogResult.OK)
                                 {
                                     var qujiu = new QuJiu();
@@ -181,7 +187,7 @@ namespace 酒水寄存
                         BindGridView();
                     }
                     //这里可以编写你需要的任意关于按钮事件的操作~
-                    
+
                 }
             }
         }
@@ -191,21 +197,21 @@ namespace 酒水寄存
             BindGridView();
         }
 
-//        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-//        {
-//            if (e.RowIndex>0)
-//            {
-//                DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
-//                if (column is DataGridViewButtonColumn)
-//                {
-//                    if (column.Name == "续存")
-//                    {
-//                        column.ReadOnly = true;
-//                    }
-//                    //dataGridView1[e.ColumnIndex, e.RowIndex].ReadOnly = true;
-//                }
-//            }
-//        }
+        //        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        //        {
+        //            if (e.RowIndex>0)
+        //            {
+        //                DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+        //                if (column is DataGridViewButtonColumn)
+        //                {
+        //                    if (column.Name == "续存")
+        //                    {
+        //                        column.ReadOnly = true;
+        //                    }
+        //                    //dataGridView1[e.ColumnIndex, e.RowIndex].ReadOnly = true;
+        //                }
+        //            }
+        //        }
 
         private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
@@ -230,7 +236,7 @@ namespace 酒水寄存
             }
             inid = inid.Remove(0, 1);
             var sql = "delete from CunJiu where Id in (" + inid + ")";
-            var sqlq = "delete from QuJiu where CunJiuId in ("+inid+")";
+            var sqlq = "delete from QuJiu where CunJiuId in (" + inid + ")";
             new HHDapperSql().ExecuteNonQuery(sql);
             new HHDapperSql().ExecuteNonQuery(sqlq);
             MessageBox.Show("删除成功");
@@ -239,8 +245,8 @@ namespace 酒水寄存
 
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            var status =dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            if (status == "已取" )
+            var status = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            if (status == "已取")
             {
                 if (dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor != Color.Green)
                 {
@@ -263,8 +269,48 @@ namespace 酒水寄存
 
         private void 返库管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var f=new FanKuList();
+            var f = new FanKuList();
             f.Show();
+        }
+
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var cunjiuid = Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value); var f = new CunJiuEdit();
+            f.Init(cunjiuid);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                BindGridView();
+            }
+
+
+        }
+
+        private void 删除选中ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定删除选中行吗？", "删除", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (dataGridView1.SelectedRows.Count < 1)
+                {
+                    return;
+                }
+               
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
+                if (row.Cells[0].Value != null&& !(row.Cells[0].Value is DBNull))
+                {
+                    var id = Convert.ToInt64(row.Cells[0].Value);
+                    var sql = "delete from CunJiu where Id = " + id + "";
+                    new HHDapperSql().ExecuteNonQuery(sql);
+                }
+                if (row.Cells[1].Value != null&&!(row.Cells[1].Value is DBNull))
+                {
+                    var id = Convert.ToInt64(row.Cells[1].Value);
+                    var sql = "delete from QuJiu where Id = " + id + "";
+                    new HHDapperSql().ExecuteNonQuery(sql);
+                }
+                MessageBox.Show("删除成功");
+                BindGridView();
+            }
         }
     }
 }

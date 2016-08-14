@@ -22,6 +22,11 @@ namespace 酒水寄存
             AppUtil.SetCommonInitForm(this);
         }
 
+        public void Init(long id)
+        {
+            mId = id;
+        }
+
         private void FanKuEdit_Load(object sender, EventArgs e)
         {
             

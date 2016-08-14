@@ -50,7 +50,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(174, 21);
             this.txtName.TabIndex = 1;
-            this.txtName.Text = "admin";
             // 
             // button1
             // 
@@ -78,7 +77,6 @@
             this.txtPwd.PasswordChar = '*';
             this.txtPwd.Size = new System.Drawing.Size(174, 21);
             this.txtPwd.TabIndex = 2;
-            this.txtPwd.Text = "yhy888";
             // 
             // LoginForm
             // 

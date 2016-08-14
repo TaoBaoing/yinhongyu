@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,10 +38,11 @@ namespace 优惠券管理
                 button1.Focus();
             }
         }
-        
+
 
         private void getSendQuan()
         {
+
             if (string.IsNullOrWhiteSpace(txtCode.Text))
             {
                 MessageBox.Show("编号不能为空");
@@ -51,16 +53,16 @@ namespace 优惠券管理
             {
                 code = "0";
             }
-            var sql = "select * from SendQuan where JuanKindId='" + JuanKindId.SelectedValue + "' and " + code +
-                      ">=IntMinCode and " + code + "<=IntMaxCode";
-             sendQuan = new HHDapperSql().Query<SendQuan>(sql).FirstOrDefault();
+            var sql = "select * from SendQuan where  " + code +">=IntMinCode and " + code + "<=IntMaxCode";
+
+            sendQuan = new HHDapperSql().Query<SendQuan>(sql).FirstOrDefault();
             if (sendQuan == null)
             {
-//                if (MessageBox.Show("没有找到对应的发券记录,是否继续？", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) ==
-//                    DialogResult.Cancel)
-//                {
-//
-//                }
+                //                if (MessageBox.Show("没有找到对应的发券记录,是否继续？", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) ==
+                //                    DialogResult.Cancel)
+                //                {
+                //
+                //                }
                 MessageBox.Show("没有找到对应的发券记录");
                 txtSendDate.Text = "";
                 txtAddressName.Text = "";
@@ -70,8 +72,20 @@ namespace 优惠券管理
 
             mSendQuanId = sendQuan.Id;
             txtSendDate.Text = sendQuan.SendDate.ToString("yyyy/MM/dd");
-            txtAddressName.Text=new HHDapperSql().Query<Address>(sendQuan.AddressId).DbName; 
-            txtSendUserName.Text=new HHDapperSql().Query<SendUser>(sendQuan.SendUserId).DbName; 
+            if (sendQuan.AddressId > 0)
+            {
+                txtAddressName.Text = new HHDapperSql().Query<Address>(sendQuan.AddressId).DbName;
+            }
+            if (sendQuan.SendUserId > 0)
+            {
+                var user = new HHDapperSql().Query<SendUser>(sendQuan.SendUserId);
+                if (user != null)
+                {
+                    txtSendUserName.Text = user.DbName;
+                }
+            }
+
+
         }
 
         private void ReceiveQuanEdit_Load(object sender, EventArgs e)
@@ -89,7 +103,7 @@ namespace 优惠券管理
             }
             if (mSendQuanId > 0)
             {
-                sendQuan=new HHDapperSql().Query<SendQuan>(mSendQuanId);
+                sendQuan = new HHDapperSql().Query<SendQuan>(mSendQuanId);
                 txtSendDate.Text = sendQuan.SendDate.ToString("yyyy/MM/dd");
                 txtAddressName.Text = new HHDapperSql().Query<Address>(sendQuan.AddressId).DbName;
                 txtSendUserName.Text = new HHDapperSql().Query<SendUser>(sendQuan.SendUserId).DbName;
@@ -104,11 +118,34 @@ namespace 优惠券管理
                 return;
             }
 
+            var sqlcount = "select count(Id) from ReceiveQuan where StrCode='" + txtCode.Text.Trim() + "'";
+            var rcount = Convert.ToInt32(new HHDapperSql().ExecuteScalar(sqlcount));
+            if (rcount > 0)
+            {
+                MessageBox.Show("优惠券号：" + txtCode.Text.Trim() + "  已经回收过，请注意查真伪", "错误优惠券号", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+          
+            var code = txtCode.Text.TrimStart('0');
+            if (string.IsNullOrEmpty(code))
+            {
+                code = "0";
+            }
+            var sql = "select * from SendQuan where  " + code + ">=IntMinCode and " + code + "<=IntMaxCode";
+
+            sendQuan = new HHDapperSql().Query<SendQuan>(sql).FirstOrDefault();
+            if (sendQuan == null)
+            {
+                MessageBox.Show("没有找到对应的发券记录");
+                return;
+            }
+
+            mSendQuanId = sendQuan.Id;
             if (mReceiveQuan == null)
             {
-                mReceiveQuan=new ReceiveQuan();
+                mReceiveQuan = new ReceiveQuan();
                 mReceiveQuan.SendQuanId = mSendQuanId;
-                mReceiveQuan.ReceiveDate=DateTime.Parse(dateTimePicker1.Text);
+                mReceiveQuan.ReceiveDate = DateTime.Parse(dateTimePicker1.Text);
                 mReceiveQuan.StrCode = txtCode.Text.Trim();
                 mReceiveQuan.JuanKindId = long.Parse(JuanKindId.SelectedValue.ToString());
             }
@@ -118,10 +155,10 @@ namespace 优惠券管理
             }
             else
             {
-                  new HHDapperSql().Insert(mReceiveQuan);
+                new HHDapperSql().Insert(mReceiveQuan);
             }
             MessageBox.Show("保存成功");
-            DialogResult=DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

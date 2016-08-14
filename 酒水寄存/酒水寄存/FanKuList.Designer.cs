@@ -41,13 +41,13 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.删除选中项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.序号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.日期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.录入人 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.种类 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.品名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.数量 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.删除选中项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,7 +79,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(648, 464);
+            this.splitContainer1.Size = new System.Drawing.Size(611, 464);
             this.splitContainer1.SplitterDistance = 41;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -91,6 +91,7 @@
             this.label5.Size = new System.Drawing.Size(11, 12);
             this.label5.TabIndex = 18;
             this.label5.Text = "0";
+            this.label5.Visible = false;
             // 
             // label4
             // 
@@ -100,6 +101,7 @@
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 17;
             this.label4.Text = "合计数量：";
+            this.label4.Visible = false;
             // 
             // button2
             // 
@@ -119,6 +121,7 @@
             this.cbxKind.Name = "cbxKind";
             this.cbxKind.Size = new System.Drawing.Size(66, 20);
             this.cbxKind.TabIndex = 15;
+            this.cbxKind.Visible = false;
             // 
             // label2
             // 
@@ -137,6 +140,7 @@
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 14;
             this.label3.Text = "种类";
+            this.label3.Visible = false;
             // 
             // label1
             // 
@@ -184,7 +188,7 @@
             this.序号,
             this.日期,
             this.录入人,
-            this.种类,
+            this.品名,
             this.数量});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -193,8 +197,23 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(648, 419);
+            this.dataGridView1.Size = new System.Drawing.Size(611, 419);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.删除选中项ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
+            // 
+            // 删除选中项ToolStripMenuItem
+            // 
+            this.删除选中项ToolStripMenuItem.Name = "删除选中项ToolStripMenuItem";
+            this.删除选中项ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.删除选中项ToolStripMenuItem.Text = "删除选中项";
+            this.删除选中项ToolStripMenuItem.Click += new System.EventHandler(this.删除选中项ToolStripMenuItem_Click);
             // 
             // 序号
             // 
@@ -220,13 +239,13 @@
             this.录入人.ReadOnly = true;
             this.录入人.Width = 150;
             // 
-            // 种类
+            // 品名
             // 
-            this.种类.DataPropertyName = "KName";
-            this.种类.HeaderText = "种类";
-            this.种类.Name = "种类";
-            this.种类.ReadOnly = true;
-            this.种类.Width = 150;
+            this.品名.DataPropertyName = "PinMing";
+            this.品名.HeaderText = "品名";
+            this.品名.Name = "品名";
+            this.品名.ReadOnly = true;
+            this.品名.Width = 150;
             // 
             // 数量
             // 
@@ -236,25 +255,11 @@
             this.数量.ReadOnly = true;
             this.数量.Width = 150;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.删除选中项ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
-            // 
-            // 删除选中项ToolStripMenuItem
-            // 
-            this.删除选中项ToolStripMenuItem.Name = "删除选中项ToolStripMenuItem";
-            this.删除选中项ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.删除选中项ToolStripMenuItem.Text = "删除选中项";
-            this.删除选中项ToolStripMenuItem.Click += new System.EventHandler(this.删除选中项ToolStripMenuItem_Click);
-            // 
             // FanKuList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 464);
+            this.ClientSize = new System.Drawing.Size(611, 464);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FanKuList";
             this.Text = "返库管理";
@@ -284,12 +289,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 删除选中项ToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn 序号;
         private System.Windows.Forms.DataGridViewTextBoxColumn 日期;
         private System.Windows.Forms.DataGridViewTextBoxColumn 录入人;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 种类;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 品名;
         private System.Windows.Forms.DataGridViewTextBoxColumn 数量;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 删除选中项ToolStripMenuItem;
     }
 }
