@@ -27,9 +27,20 @@ namespace 酒水寄存
             {
                 AppUtil.DbUser = user;
 
-                var f = new MainForm();
-                this.Hide();
-                f.Show();
+               
+                if (user.UserType == UserType.库管)
+                {
+                    var f = new MainForm1();
+                    this.Hide();
+                    f.Show();
+                }
+                else
+                {
+                    var f = new MainForm();
+                    this.Hide();
+                    f.Show();
+                }
+                
             }
             else
             {

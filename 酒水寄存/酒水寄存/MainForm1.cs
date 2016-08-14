@@ -12,9 +12,9 @@ using 酒水寄存.Models;
 
 namespace 酒水寄存
 {
-    public partial class MainForm : Form
+    public partial class MainForm1 : Form
     {
-        public MainForm()
+        public MainForm1()
         {
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
@@ -128,7 +128,7 @@ namespace 酒水寄存
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+          
             if (e.RowIndex >= 0)
             {
                 DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
