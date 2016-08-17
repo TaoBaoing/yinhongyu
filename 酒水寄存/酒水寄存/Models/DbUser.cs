@@ -17,7 +17,7 @@ namespace 酒水寄存.Models
     public class UserType
     {
         public static string 库管 = "库管";
-        public static string 客户 = "客户";
+        public static string 客服 = "客服";
         public static string 管理员 = "管理员";
 
     }

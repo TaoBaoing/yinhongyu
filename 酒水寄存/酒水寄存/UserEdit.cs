@@ -55,7 +55,7 @@ namespace 酒水寄存
             {
                 txtName.Enabled = false;
                 dbUser=new HHDapperSql().Query<DbUser>(mId);
-                if (dbUser.UserType == UserType.客户 && AppUtil.DbUser.UserType == UserType.管理员)
+                if (dbUser.UserType == UserType.管理员 && AppUtil.DbUser.UserType == UserType.客服)
                 {
                     MessageBox.Show("客服不允许修改管理员信息");
                     Close();

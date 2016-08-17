@@ -32,10 +32,10 @@ namespace 酒水寄存
                 button1.Visible = false;
                 dataGridView1.Columns["续存"].Visible = false;
                 dataGridView1.Columns["取酒"].Visible = false;
-                返库管理ToolStripMenuItem.Visible = false;
+                //返库管理ToolStripMenuItem.Visible = false;
                 contextMenuStrip1.Visible = false;
             }
-            else if (AppUtil.DbUser.UserType == UserType.客户)
+            else if (AppUtil.DbUser.UserType == UserType.客服)
             {
                 用户管理ToolStripMenuItem.Visible = false;
             }
@@ -272,14 +272,16 @@ namespace 酒水寄存
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (AppUtil.DbUser.UserType == UserType.库管)
+            {
+                return;
+            }
             var cunjiuid = Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value); var f = new CunJiuEdit();
             f.Init(cunjiuid);
             if (f.ShowDialog() == DialogResult.OK)
             {
                 BindGridView();
             }
-
-
         }
 
         private void 删除选中ToolStripMenuItem_Click(object sender, EventArgs e)
