@@ -75,7 +75,7 @@ namespace 酒水寄存
             SetVisiable();
             toolCurrentUser.Text = AppUtil.DbUser.DbName;
 
-            var maxDate = DateTime.Today.AddMonths(-6);
+            var maxDate = DateTime.Today.AddMonths(-6).ToString("yyyy-MM-dd");
             var delSql = "delete from CunJiu where CreateDateTime<'" + maxDate + "'";
             new HHDapperSql().ExecuteNonQuery(delSql);
             delSql = "delete from QuJiu where CreateDateTime<'" + maxDate + "'";

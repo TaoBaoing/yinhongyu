@@ -13,7 +13,11 @@ namespace ktv.model
     public class SqlHelper
     {
         //北行
-        private static string strCon = "server=192.168.0.28;database=KtvYuDing;uid=sa;pwd=123";
+//        private static string strCon = "server=192.168.0.28;database=KtvYuDing;uid=sa;pwd=123";
+        
+        //
+        private static string strCon = @"server=.\SQLEXPRESS;database=KtvYuDing;uid=sa;pwd=123";
+
 //        private static string strCon = @"Password=123456;Persist Security Info=True;User ID=sa;Initial Catalog=KtvYuDing;Data Source=.\SQLEXPRESS";
 
         public static int Execute(string sql)
