@@ -32,12 +32,10 @@ namespace 优惠券管理
             var minDate = new DateTime(int.Parse(cbxYear.Text),int.Parse(cbxMonth.Text.Replace("月","")),1);
             var maxDate = new DateTime(int.Parse(cbxYear.Text),int.Parse(cbxMonth.Text.Replace("月","")),1).AddMonths(1);
 
-            var sendNumberSql = "select  sum(Number) from SendQuan where SendDate>='" + minDate + "' and SendDate<'" +
-                             maxDate + "'";
+            var sendNumberSql = "select  sum(Number) from SendQuan where SendDate>='" + minDate + "' and SendDate<'" +maxDate + "'";
 
             var receiveNumberSql = "select count(Id) from ReceiveQuan  where ReceiveDate>='" + minDate +
-                                "' and ReceiveDate<'" +
-                                maxDate + "'";
+                                "' and ReceiveDate<'" +maxDate + "'";
 
             var sendNumber = new HHDapperSql().ExecuteScalar<int>(sendNumberSql);
             var receiveNumber = new HHDapperSql().ExecuteScalar<int>(receiveNumberSql);

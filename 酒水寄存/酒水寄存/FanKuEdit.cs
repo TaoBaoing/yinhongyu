@@ -54,7 +54,7 @@ namespace 酒水寄存
                 MessageBox.Show("数量不是整数");
                 return;
             }
-            mFanKu.CreateDateTime = Convert.ToDateTime(dateTimePickerStart.Text);
+            mFanKu.CreateDateTime = (dateTimePickerStart.Value.Date);
            
             if (mId < 1)
             {

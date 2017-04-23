@@ -101,6 +101,7 @@ namespace Ktv.YuDing
 
             mYuDing.Code = Code.Text;
             mYuDing.YuDingTime = Convert.ToDateTime(YuDingTime.Text);
+
             mYuDing.XingMing = XingMing.Text;
             mYuDing.Sex = Sex.Text;
             mYuDing.Phone = Phone.Text;

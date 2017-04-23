@@ -29,7 +29,7 @@ namespace Ktv.YuDing
         {
             var minTime = DateTime.Today.AddDays(-7);
 
-            var sql = "select * from YuDing where YuDingTime>='" + minTime + "' ";
+            var sql = "select * from YuDing where 1=1 ";
             if (!string.IsNullOrEmpty(txtXingMing.Text))
             {
                 sql += " and XingMing like '%" + txtXingMing.Text + "%'";
@@ -40,11 +40,15 @@ namespace Ktv.YuDing
             }
             if (dateTimePicker1.Checked)
             {
-                sql += " and YuDingTime >= '" + dateTimePicker1.Value + "'";
+                sql += " and YuDingTime >= '" + dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm") + "'";
+            }
+            else
+            {
+                sql += " and  YuDingTime >= '" + minTime + "'";
             }
             if (dateTimePicker2.Checked)
             {
-                sql += " and YuDingTime <= '" + dateTimePicker2.Value + "'";
+                sql += " and YuDingTime <= '" + dateTimePicker2.Value.ToString("yyyy-MM-dd HH:mm") + "'";
             }
             if (!string.IsNullOrEmpty(FangXing.Text))
             {
@@ -52,6 +56,8 @@ namespace Ktv.YuDing
             }
 
             sql +=" order by YuDingTime desc";
+            sql=  sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "").Replace(" 00", "");
+//            MessageBox.Show(sql);
                 dataGridView1.DataSource = SqlHelper.Query<ktv.model.YuDing>(sql);
         }
 

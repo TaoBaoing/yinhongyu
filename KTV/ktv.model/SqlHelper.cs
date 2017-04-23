@@ -16,12 +16,16 @@ namespace ktv.model
 //        private static string strCon = "server=192.168.0.28;database=KtvYuDing;uid=sa;pwd=123";
         
         //
-        private static string strCon = @"server=.\SQLEXPRESS;database=KtvYuDing;uid=sa;pwd=123";
+        private static string strCon = @"server=192.168.9.3;database=KtvYuDing;uid=sa;pwd=123";
+//        private static string strCon = @"server=.;database=KtvYuDing;uid=sa;pwd=bwp2011!@#";
+
+       
 
 //        private static string strCon = @"Password=123456;Persist Security Info=True;User ID=sa;Initial Catalog=KtvYuDing;Data Source=.\SQLEXPRESS";
 
         public static int Execute(string sql)
         {
+            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "").Replace(" 00", "");
             using (var con=new SqlConnection(strCon))
             {
                 return con.Execute(sql, null);
@@ -30,6 +34,7 @@ namespace ktv.model
 
         public static object ExecuteScalar(string sql)
         {
+            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "").Replace(" 00","");
             using (var con = new SqlConnection(strCon))
             {
                 return con.ExecuteScalar(sql, null, null, null, null);
@@ -38,6 +43,7 @@ namespace ktv.model
 
         public static IEnumerable<T> Query<T>(string sql)  
         {
+            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "").Replace(" 00", "");
             using (var con = new SqlConnection(strCon))
             {
                 return con.Query<T>(sql,null);
@@ -49,6 +55,7 @@ namespace ktv.model
             using (var con = new SqlConnection(strCon))
             {
                 var sql = GetInsertsql(dmo);
+                sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "").Replace(" 00", "");
                 return Convert.ToInt64(con.ExecuteScalar(sql, null, null, null, null));
             }
         }
@@ -120,10 +127,10 @@ namespace ktv.model
 
         public static void Update(object model)
         {
-
             using (var con = new SqlConnection(strCon))
             {
                 var sql = GetUpdatesql(model);
+                sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "").Replace(" 00", "");
                 con.Execute(sql,null,null,null,null);
             }
         }

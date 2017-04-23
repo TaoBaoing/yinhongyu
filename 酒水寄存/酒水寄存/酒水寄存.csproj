@@ -36,11 +36,8 @@
     <ApplicationIcon>jiushui.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HH.Dapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\HH.Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -78,6 +75,12 @@
     <Compile Include="FanKuList.Designer.cs">
       <DependentUpon>FanKuList.cs</DependentUpon>
     </Compile>
+    <Compile Include="HHDapper\Dapper.cs" />
+    <Compile Include="HHDapper\DbBase.cs" />
+    <Compile Include="HHDapper\Extension.cs" />
+    <Compile Include="HHDapper\HHDapper.cs" />
+    <Compile Include="HHDapper\HHDapperSql.cs" />
+    <Compile Include="HHDapper\NotMappedAttribute.cs" />
     <Compile Include="JiuShuiKindEdit.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -38,10 +38,8 @@
     <ApplicationIcon>yhq.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HH.Dapper">
-      <HintPath>..\..\..\..\MyProject\huihui\HH.Dapper\bin\Debug\HH.Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -65,6 +63,12 @@
     <Compile Include="AddressList.Designer.cs">
       <DependentUpon>AddressList.cs</DependentUpon>
     </Compile>
+    <Compile Include="HHDapper\Dapper.cs" />
+    <Compile Include="HHDapper\DbBase.cs" />
+    <Compile Include="HHDapper\Extension.cs" />
+    <Compile Include="HHDapper\HHDapper.cs" />
+    <Compile Include="HHDapper\HHDapperSql.cs" />
+    <Compile Include="HHDapper\NotMappedAttribute.cs" />
     <Compile Include="JuanKindEdit.cs">
       <SubType>Form</SubType>
     </Compile>
