@@ -75,7 +75,7 @@ namespace 酒水寄存
             SetVisiable();
             toolCurrentUser.Text = AppUtil.DbUser.DbName;
 
-            var maxDate = DateTime.Today.AddMonths(-6).ToString("yyyy-MM-dd");
+            var maxDate = DateTime.Today.AddMonths(-3).ToString("yyyy-MM-dd");
             var delSql = "delete from CunJiu where CreateDateTime<'" + maxDate + "'";
             new HHDapperSql().ExecuteNonQuery(delSql);
             delSql = "delete from QuJiu where CreateDateTime<'" + maxDate + "'";
@@ -123,7 +123,15 @@ namespace 酒水寄存
             }
 
             sql += " order by c.CreateDateTime desc";
-            dataGridView1.DataSource = new HHDapperSql().ExecuteDataSet(sql).Tables[0].DefaultView;
+          var dt = new HHDapperSql().ExecuteDataSet(sql).Tables[0];
+            dataGridView1.DataSource = dt.DefaultView;
+
+          int sumNumber = 0;
+          foreach (DataRow row in dt.Rows)
+          {
+            sumNumber += Convert.ToInt32(row["数量"]);
+          }
+          toolLabelSumNumber.Text = sumNumber.ToString();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
