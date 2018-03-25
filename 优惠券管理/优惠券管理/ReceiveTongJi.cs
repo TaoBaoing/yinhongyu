@@ -29,8 +29,8 @@ namespace 优惠券管理
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var minDate = new DateTime(int.Parse(cbxYear.Text),int.Parse(cbxMonth.Text.Replace("月","")),1);
-            var maxDate = new DateTime(int.Parse(cbxYear.Text),int.Parse(cbxMonth.Text.Replace("月","")),1).AddMonths(1);
+            var minDate = new DateTime(int.Parse(cbxYear.Text),int.Parse(cbxMonth.Text.Replace("月","")),1).ToString("yyyy-MM-dd");
+            var maxDate = new DateTime(int.Parse(cbxYear.Text),int.Parse(cbxMonth.Text.Replace("月","")),1).AddMonths(1).ToString("yyyy-MM-dd");
 
             var sendNumberSql = "select  sum(Number) from SendQuan where SendDate>='" + minDate + "' and SendDate<'" +maxDate + "'";
 

@@ -91,11 +91,11 @@ namespace 酒水寄存
 
             if (dateTimePicker1.Checked)
             {
-                sql += " and c.CreateDateTime>='" + Convert.ToDateTime(dateTimePicker1.Text) + "'";
+                sql += " and c.CreateDateTime>='" + Convert.ToDateTime(dateTimePicker1.Text).ToString("yyyy-MM-dd") + "'";
             }
             if (dateTimePicker2.Checked)
             {
-                sql += " and c.CreateDateTime<'" + Convert.ToDateTime(dateTimePicker1.Text).AddDays(1) + "'";
+                sql += " and c.CreateDateTime<'" + Convert.ToDateTime(dateTimePicker1.Text).AddDays(1).ToString("yyyy-MM-dd") + "'";
             }
             if (cbxKind.SelectedIndex > 0)
             {

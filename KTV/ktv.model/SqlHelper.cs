@@ -16,7 +16,7 @@ namespace ktv.model
 //        private static string strCon = "server=192.168.0.28;database=KtvYuDing;uid=sa;pwd=123";
         
         //珍惜现在
-        private static string strCon = @"server=192.168.1.24;database=KtvYuDing;uid=sa;pwd=123";
+        private static string strCon = @"Password=123;Persist Security Info=True;User ID=sa;Initial Catalog=KtvYuDing;Data Source=.";
 //        private static string strCon = @"server=.;database=KtvYuDing;uid=sa;pwd=bwp2011!@#";
 
        

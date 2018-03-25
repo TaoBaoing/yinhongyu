@@ -36,11 +36,11 @@ namespace 酒水寄存
                 "select f.Id,f.CreateDateTime,u.DbName 'UName',PinMing,Number from FanKu f left join DbUser u on f.UserId=u.Id  where 1=1 ";
             if (dateTimePicker1.Checked)
             {
-                sql += " and f.CreateDateTime>='" + (dateTimePicker1.Value).Date + "'";
+                sql += " and f.CreateDateTime>='" + (dateTimePicker1.Value).Date.ToString("yyyy-MM-dd") + "'";
             }
             if (dateTimePicker2.Checked)
             {
-                sql += " and f.CreateDateTime<'" + (dateTimePicker2.Value).Date.AddDays(1) + "'";
+                sql += " and f.CreateDateTime<'" + (dateTimePicker2.Value).Date.AddDays(1).ToString("yyyy-MM-dd") + "'";
             }
             if (cbxKind.SelectedIndex > 0)
             {
