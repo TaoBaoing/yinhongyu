@@ -125,11 +125,11 @@ namespace 优惠券管理
                 "select top 1000 rq.Id,sq.SendDate,su.DbName as 'SendUserName',ad.DbName as 'AddressName',jk.DbName as 'JuanKindName',rq.StrCode,rq.ReceiveDate from [ReceiveQuan] rq left join [dbo].[SendQuan] sq on rq.SendQuanId=sq.Id left join SendUser su on sq.SendUserId=su.Id left join Address ad on sq.AddressId=ad.Id left join JuanKind jk on sq.JuanKindId=jk.Id where 1=1 ";
             if (dateTimePicker1.Checked)
             {
-                sql+= " and rq.ReceiveDate>='"+DateTime.Parse(dateTimePicker1.Text) +"'";
+                sql+= " and rq.ReceiveDate>='"+DateTime.Parse(dateTimePicker1.Text).ToString("yyyy-MM-dd HH:mm") + "'";
             }
             if (dateTimePicker2.Checked)
             {
-                sql += " and rq.ReceiveDate<='" + DateTime.Parse(dateTimePicker2.Text) + "'";
+                sql += " and rq.ReceiveDate<='" + DateTime.Parse(dateTimePicker2.Text).ToString("yyyy-MM-dd HH:mm") + "'";
             }
             if (!string.IsNullOrEmpty(txtCode.Text))
             {

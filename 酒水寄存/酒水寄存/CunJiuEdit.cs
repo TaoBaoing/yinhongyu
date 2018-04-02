@@ -72,9 +72,13 @@ namespace 酒水寄存
 
             mDmo.KindId = Convert.ToInt64(cboxKind.SelectedValue);
             mDmo.CardNumber = txtCardNumber.Text;
+     
             mDmo.CreateDateTime = Convert.ToDateTime(dateTimePickerStart.Text);
             mDmo.OverDateTime = Convert.ToDateTime(dateTimePickerEnd.Text);
-            if (mId == 0)
+//          MessageBox.Show(dateTimePickerStart.Text + "");
+      //          mDmo.CreateDateTime = (dateTimePickerStart.Value);
+      //            mDmo.OverDateTime = (dateTimePickerEnd.Value);
+      if (mId == 0)
             {
                 mDmo.UserId = AppUtil.DbUser.Id;
             }

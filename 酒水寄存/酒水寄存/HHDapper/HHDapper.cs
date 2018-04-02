@@ -78,7 +78,7 @@ namespace HH.Dapper
                             sb.Append(@"[" + name + "]=N'" + namevalue.ToString().Replace('\'', '^') + "'" + " ,");
                             break;
                         case "datetime":
-                            sb.Append("[" + name + "]='" + namevalue + "' ,");
+                            sb.Append("[" + name + "]='" + Convert.ToDateTime(namevalue).ToString("yyyy-MM-dd") + "' ,");
                             break;
                         default:
                             sb.Append(name + "='" + namevalue + "' ,");
@@ -113,6 +113,7 @@ namespace HH.Dapper
 
         protected string GetInsertsql(object model)
         {
+//          MessageBox.Show("1");
             #region 拼凑sql语句
             var tableName = model.GetType().Name;
             var sb = new StringBuilder("insert into " + tableName + "  (");
@@ -159,7 +160,7 @@ namespace HH.Dapper
                             sb.Append(@"N'" + namevalue.ToString().Replace('\'', '^') + "'" + " ,");
                             break;
                         case "datetime":
-                            sb.Append(@"'" + namevalue + "'" + " ,");
+                            sb.Append(@"'" + Convert.ToDateTime(namevalue).ToString("yyyy-MM-dd")  + "'" + " ,");
                             break;
                         case "bool":
                         case "boolean":
@@ -183,6 +184,8 @@ namespace HH.Dapper
             sb.Append(")");
             sb.Append(" SELECT CAST(scope_identity() AS bigint)");
             #endregion
+
+//          MessageBox.Show(sb.ToString());
             return sb.ToString();
 
         }

@@ -29,7 +29,7 @@ namespace HH.Dapper
             using (DbConnection)
             {
                 var sql = GetUpdatesql(model);
-                sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
+//                sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
                 DbConnection.Execute(sql);
             }
         }
@@ -78,7 +78,7 @@ namespace HH.Dapper
                             sb.Append(@"[" + name + "]=N'" + namevalue.ToString().Replace('\'', '^') + "'" + " ,");
                             break;
                         case "datetime":
-                            sb.Append("[" + name + "]='" + namevalue + "' ,");
+                            sb.Append("[" + name + "]='" + Convert.ToDateTime(namevalue).ToString("yyyy-MM-dd HH:mm") + "' ,");
                             break;
                         default:
                             sb.Append(name + "='" + namevalue + "' ,");
@@ -101,7 +101,7 @@ namespace HH.Dapper
             {
                 var sql = GetInsertsql(dmo);
 
-                sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
+//                sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
 
                 //          using (var sw=new StreamWriter("log.txt",true))
                 //          {
@@ -159,7 +159,7 @@ namespace HH.Dapper
                             sb.Append(@"N'" + namevalue.ToString().Replace('\'', '^') + "'" + " ,");
                             break;
                         case "datetime":
-                            sb.Append(@"'" + namevalue + "'" + " ,");
+                            sb.Append(@"'" +Convert.ToDateTime(namevalue).ToString("yyyy-MM-dd HH:mm") + "'" + " ,");
                             break;
                         case "bool":
                         case "boolean":
@@ -259,7 +259,7 @@ namespace HH.Dapper
 
         public int ExecuteNonQuery(string sql)
         {
-            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
+//            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
             using (DbConnection)
             {
                 return DbConnection.Execute(sql);
@@ -267,7 +267,7 @@ namespace HH.Dapper
         }
         public object ExecuteScalar(string sql)
         {
-            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
+//            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
             using (DbConnection)
             {
                 return DbConnection.ExecuteScalar(sql);
@@ -275,7 +275,7 @@ namespace HH.Dapper
         }
         public T ExecuteScalar<T>(string sql)
         {
-            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
+//            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
             using (DbConnection)
             {
                 return DbConnection.ExecuteScalar<T>(sql);
@@ -283,7 +283,7 @@ namespace HH.Dapper
         }
         public virtual IDataReader ExecuteReader(string sql)
         {
-            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
+//            sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "");
             using (DbConnection)
             {
                 return DbConnection.ExecuteReader(sql);

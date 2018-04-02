@@ -27,7 +27,7 @@ namespace Ktv.YuDing
 
         private void BindGridView()
         {
-            var minTime = DateTime.Today.AddDays(-7);
+            var minTime = DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd HH:mm");
 
             var sql = "select * from YuDing where 1=1 ";
             if (!string.IsNullOrEmpty(txtXingMing.Text))
@@ -56,7 +56,7 @@ namespace Ktv.YuDing
             }
 
             sql +=" order by YuDingTime desc";
-            sql=  sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "").Replace(" 00", "");
+//            sql=  sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "").Replace(" 00", "");
 //            MessageBox.Show(sql);
                 dataGridView1.DataSource = SqlHelper.Query<ktv.model.YuDing>(sql);
         }
@@ -94,9 +94,10 @@ namespace Ktv.YuDing
 
         private void BindDefaultGridView()
         {
-            var minTime = DateTime.Today.AddDays(-7);
+            var minTime = DateTime.Today.AddDays(-7).ToString("yyyy-MM-dd HH:mm");
             var sql = "select * from YuDing where YuDingTime>='"+ minTime + "' order by YuDingTime desc";
-            var list = SqlHelper.Query<ktv.model.YuDing>(sql).ToList();
+     
+      var list = SqlHelper.Query<ktv.model.YuDing>(sql).ToList();
             dataGridView1.DataSource = list;
         }
 
