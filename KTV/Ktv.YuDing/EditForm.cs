@@ -128,7 +128,7 @@ namespace Ktv.YuDing
             {
                 var today = Convert.ToDateTime(mYuDing.YuDingTime.ToString("yyyy-MM-dd HH:mm"));
                 var tom = today.AddDays(1);
-                var maxsql = "select max(TodayId) from YuDing where YuDingTime>='" + today + "' and YuDingTime<'" + tom + "'";
+                var maxsql = "select max(TodayId) from YuDing where YuDingTime>='" + today.ToString("yyyy-MM-dd HH:mm") + "' and YuDingTime<'" + tom.ToString("yyyy-MM-dd HH:mm") + "'";
                 var maxtid = SqlHelper.ExecuteScalar(maxsql);
                 mYuDing.TodayId = Convert.ToInt64(maxtid) + 1;
                 SqlHelper.Insert(mYuDing);

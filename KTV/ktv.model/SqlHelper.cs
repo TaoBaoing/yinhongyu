@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Windows.Forms;
 using Dapper;
 using ktv.model;
 
@@ -55,6 +56,7 @@ namespace ktv.model
       using (var con = new SqlConnection(strCon))
       {
         var sql = GetInsertsql(dmo);
+//        MessageBox.Show(sql);
 //        sql = sql.Replace(" 00:00 00", "").Replace(" 0:00:00", "").Replace(" 00", "");
         return Convert.ToInt64(con.ExecuteScalar(sql, null, null, null, null));
       }
